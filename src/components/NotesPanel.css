@@ -1,0 +1,127 @@
+.notes{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--content-bg);
+}
+
+/* Sticky header */
+.notes-header{
+  position: sticky;
+  top: 0;
+  background: #001F8B;
+  color: #fff;
+  padding: 12px 14px;
+  display: grid;
+  grid-template-columns: 0 44px 1fr; /* back | avatar | title */
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+.back-btn{
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: none;             /* hidden on desktop */
+}
+.notes-avatar{
+  width: 40px; height: 40px;
+  border-radius: 999px;
+  display: grid; place-items: center;
+  color: #fff; font-weight: 800;
+}
+.notes-title{
+  font-weight: 800; font-size: 18px; margin-left: 3rem;
+}
+
+/* Mobile shows back button */
+@media (max-width: 640px){
+  .notes-header{
+    grid-template-columns: 28px 40px 1fr;
+    padding: 12px 12px;
+  }
+  .back-btn{ display: inline-block; }
+  .notes-title{ font-size: 16px; margin-left: 0rem; }
+  .notes-avatar{ width: 36px; height: 36px; font-size: 12px; }
+}
+
+/* Scrollable list */
+.notes-scroll{
+  flex: 1;
+  overflow: auto;
+  padding: 14px;
+}
+
+/* Message card */
+.note-card{
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.08);
+  margin-bottom: 12px;
+}
+
+.note-time{
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 13px;
+  font-weight: 700;
+}
+.note-time-inner{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f172a;
+}
+.note-time .dot { color: #6b7280; }
+.note-time .time { font-weight: 700; }
+
+/* Composer fixed at bottom */
+.composer{
+  position: sticky;
+  bottom: 0;
+  background: #001F8B;
+  padding: 14px;
+  z-index: 2;
+}
+.composer-inner{
+  background: #001F8B;
+  border-radius: 14px;
+}
+
+/* Textarea + send button inside */
+.composer-input-wrap{ position: relative; }
+.composer-input-wrap textarea{
+  width: 100%;
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 56px 14px 14px;
+  min-height: 120px;        /* smaller on mobile */
+  resize: vertical;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+@media (min-width: 768px){
+  .composer-input-wrap textarea{ min-height: 180px; padding: 16px 60px 16px 18px; }
+}
+
+/* Send button inside the input field */
+.btn-send{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 42px; height: 42px;
+  border: none; background: transparent;
+  display: grid; place-items: center; cursor: pointer;
+}
+.btn-send svg path { fill: #001F8B; }
+.btn-send:disabled{ cursor: not-allowed; opacity: .6; }
+.btn-send:disabled svg path { fill: #9CA3AF; }
