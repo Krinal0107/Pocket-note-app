@@ -1,0 +1,20 @@
+.content{
+  position: relative;
+  background: var(--content-bg);
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  height: 100%;             /* <-- fill the column height */
+}
+
+.center-wrap{ text-align: center; max-width: 720px; margin-inline: auto; }
+
+.illustration{ width: clamp(220px, 60vw, 520px); height: auto; margin-bottom: 20px; }
+
+.headline{ font-size: 40px; font-weight: 700; letter-spacing: .2px; margin-bottom: 8px; }
+.lead{ color:#292929; font-weight: 500; font-size: 18px; margin-bottom: 6px; }
+
+@media (max-width: 640px){
+  .headline{ font-size: 28px; }
+  .lead{ font-size: 16px; }
+}
